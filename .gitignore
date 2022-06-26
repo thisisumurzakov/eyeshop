@@ -4,3 +4,7 @@ __pycache__/
 db.sqlite3
 axror.py
 akbar.py
+media/
+*.jpg
+*.jpeg
+*.png
