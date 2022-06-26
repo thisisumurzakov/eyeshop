@@ -20,9 +20,14 @@ class ProductListView(ListAPIView):
     def get_queryset(self):
         return Product.objects.filter(category=self.kwargs['pk'])
 
-class ProductDetail(RetrieveAPIView):
+class ProductDetailView(RetrieveAPIView):
     serializer_class = ProductListSerializer
     permission_classes = (AllowAny,)
 
+
+class ProductListAllView(ListAPIView):
+    queryset = Product.objects.all()
+    serializer_class = ProductListSerializer
+    permission_classes = (AllowAny,)
 
 
