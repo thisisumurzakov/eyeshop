@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-$+y2ji98c284bpc!6we4==in3$*xldv6ba$vrwh3nsy^7$cc%-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'sense-ozero.herokuapp.com', '1396-213-230-96-172.ngrok.io',
+ALLOWED_HOSTS = ['localhost', 'sense-ozero.herokuapp.com', '6413-213-230-64-234.ngrok.io',
                  '127.0.0.1']
 
 

@@ -37,7 +37,6 @@ class Picture_Upload(APIView):
     # Detect faces in the image
     # Detect faces
     faces = faceCascade.detectMultiScale(image, scaleFactor=1.1, minSize=(30, 30))
-#    bodies = bodyCascade.detectMultiScale(image, 1.1, 4)
 
 
 
@@ -46,13 +45,12 @@ class Picture_Upload(APIView):
     pixel = ''
     #for (x,y,w,h)
     for (x, y, w, h) in faces:
-      cv2.rectangle(image, (x, y), (x + w, y + h), (255, 0, 0), 2)
+      cv2.rectangle(image, (x, y), (x + faces, y + h), (255, 0, 0), 2)
       faces = image[y:y + h, x:x + w]
-      hair = image[y:y-10, x:x - 10]
       cv2.imwrite('face.jpg', faces)
-      cv2.imwrite('hair.jpg', hair)
       pixel = cv2.resize(faces, (1, 1))
-      cv2.imwrite('pixel.jpg', pixel)
+      pixel_for_front = cv2.resize(pixel, (100, 100))
+      cv2.imwrite('media/pixel.jpg', pixel_for_front)
       pixel = cv2.cvtColor(pixel, cv2.COLOR_BGR2GRAY)
       print(pixel)
       print('bupixel')
@@ -77,4 +75,5 @@ class Picture_Upload(APIView):
     print(shade)
     print(pixel)
     print(products)
-    return Response(status=200, data=ProductListSerializer(products, many=True).data)
+    data = ProductListSerializer(products, many=True).data
+    return Response(status=200, data=data)
